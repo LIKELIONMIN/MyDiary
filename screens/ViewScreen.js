@@ -16,10 +16,10 @@ export default ViewScreen = (props) => {
     return (
         <SafeAreaView>
             <View style={styles.contentContainer}>
-								// 가져온 ViewHeader을 붙여주세요.
+								
                 <ViewHeader 
                     style={styles.viewHeader}/>
-								//삼항 연산자를 사용해서 post가 null이 아니라면 post의 데이터들을 출력해줍니다.
+								
                 {post?
                     <View>
                     <View style={styles.emptyBox}/>
