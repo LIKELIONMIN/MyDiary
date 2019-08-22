@@ -13,7 +13,9 @@ export default ViewScreen = (props) => {
     return (
         <SafeAreaView>
             <View style={styles.contentContainer}>
-                <ViewHeader 
+                <ViewHeader
+                     postId={post.id}
+                     deletePost={() => {props.screenProps.deletePost(post.id)}} 
                      style={styles.viewHeader}/>
                 {post?
                     <View>

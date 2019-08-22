@@ -16,7 +16,11 @@ const ViewHeader = (props) => {
             </TouchableOpacity>
             <TouchableOpacity
                 activeOpacity={0.8}
-                hitSlop={{top:32, bottom:32, left:32, right: 32}}>
+                hitSlop={{top:32, bottom:32, left:32, right: 32}}
+                onPress={(id) => {
+                    props.deletePost(id);
+                    props.navigation.navigate('ListScreen');
+                }}>
                 <Ionicons name="ios-close" size={30} color={'#7a7171'}></Ionicons>
             </TouchableOpacity>
         </View>

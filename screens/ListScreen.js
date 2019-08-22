@@ -22,6 +22,7 @@ export default ListScreen = (props) => {
             todayTextStyle={{fontWeight: 'bold',textDecorationLine: 'underline'}}
             todayBackgroundColor={'transparent'}
             selectedDayColor="#ffe28c"
+            selectedStartDate={props.screenProps.selectedDate}
             onDateChange={props.screenProps.changeDate}/>
             <ScrollView style={styles.listContainer}>
                 <FlatList
