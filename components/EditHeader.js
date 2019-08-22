@@ -7,7 +7,7 @@ import {withNavigation} from 'react-navigation'
 import { Ionicons } from '@expo/vector-icons';
 
 //EditHeader 컴포넌트를 생성합니다.
-const EditHeader = ({navigation}) => {
+const EditHeader = ({navigation,addPost}) => {
     return (
         <View style={styles.container}>
             {/* 눌렀을 때 반짝이는 버튼 컴포넌트
@@ -17,16 +17,21 @@ const EditHeader = ({navigation}) => {
             <TouchableOpacity
                 activeOpacity={0.8}
                 onPress={() => {navigation.goBack()}}
-                hitSlop={{top:32, bottom:32, left:32, right: 32}}>
+                hitSlop={{top:32, bottom:32, left:32, right: 32}}
+                onPress={() => {
+                    addPost();
+                    navigation.navigate('ListScreen');
+                }}>
                 <Ionicons name="ios-arrow-back" size={25} color={'#7a7171'}></Ionicons>
             </TouchableOpacity>
 
             <View style={styles.iconContainer}>
-                <TouchableOpacity
-                    activeOpacity={0.8}
-                    hitSlop={{top:2, bottom:2, left:2, right: 2}}>
-                    <Ionicons name="ios-image" size={25} color={'#7a7171'}></Ionicons>
-                </TouchableOpacity>
+            <TouchableOpacity
+	                activeOpacity={0.8}
+	                 hitSlop={{top:2, bottom:2, left:2, right: 2}}
+	                onPress={selectPicture}>
+	                <Ionicons name="ios-image" size={25} color={'#7a7171'}></Ionicons>
+	            </TouchableOpacity>
                 <TouchableOpacity
                     activeOpacity={0.8}
                     hitSlop={{top:2, bottom:2, left:2, right: 2}}>
