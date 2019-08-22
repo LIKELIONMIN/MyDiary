@@ -7,7 +7,7 @@ import {withNavigation} from 'react-navigation'
 import { Ionicons } from '@expo/vector-icons';
 
 //EditHeader 컴포넌트를 생성합니다.
-const EditHeader = ({navigation,addPost}) => {
+const EditHeader = ({navigation,addPost,selectPicture}) => {
     return (
         <View style={styles.container}>
             {/* 눌렀을 때 반짝이는 버튼 컴포넌트

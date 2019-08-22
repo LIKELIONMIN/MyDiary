@@ -32,6 +32,23 @@ export default class App extends React.Component {
     }]
   }
 
+  // 사진을 선택해 해당 uri를 저장하는 함수입니다.
+// async-await를 사용합니다.
+	_selectPicture = async () => {
+		// 현재 사용하는 플랫폼이 ios라면 사진의 접근권한을 체크합니다.
+	  if(Platform.OS == 'ios'){
+	    const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+			// 접근 권한이 허용되지 않았다면, 권한 허용을 요청합니다.
+	    if (status !== 'granted') {
+	      alert('설정 > expo > 사진 읽기 및 쓰기 허용을 설정해주세요.');
+	    }
+	  }
+	// 사진을 받아와, 정보를 저장합니다.
+  const result = await ImagePicker.launchImageLibraryAsync({allowsEditing:true});
+	// 사진의 uri를 state에 설정합니다.
+  this.setState({imageUrl: result.uri});
+}
+
   // 제목을 입력하는 TextInput의 내용이 변경될 때 실행될 함수
   _changeTitle = (value) => {
     this.setState({
@@ -93,18 +110,6 @@ export default class App extends React.Component {
     });
   }
 
-  _selectPicture = async () =>{
-    if(Platform.OS =='ios'){
-      const {status} = await Permissions.askAsync(Permissions.CAMERA_ROLL);
-      if(status !=='granted'){
-        alert('설정>expo>사진 읽기 및 쓰기 허용을 설정해주세요');
-      }
-    }
-    const result = await ImagePicker.launchImageLibraryAsync({allowEditing:true});
-    this.setState({
-      imageUrl: result.uri
-    });
-  }
 
   render() {
     return (
